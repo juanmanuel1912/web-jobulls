@@ -180,8 +180,10 @@ export default function CameraScroll() {
 
     ctx.imageSmoothingEnabled = true
     ctx.imageSmoothingQuality = 'high'
+    
     ctx.clearRect(0, 0, cssW, cssH)
-    ctx.drawImage(img, dx, dy, dw, dh)
+    // Floor coordinates to avoid sub-pixel blurring
+    ctx.drawImage(img, Math.floor(dx), Math.floor(dy), Math.floor(dw), Math.floor(dh))
   }, [])
 
   /* ─── RAF draw loop ─── */
@@ -252,12 +254,29 @@ export default function CameraScroll() {
     <div ref={containerRef} className="relative" style={{ height: '380vh' }}>
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden bg-hero-green">
+        
+        {/* Background Image: Authentic Ranch */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/pasture_real.jpg" 
+            alt="" 
+            className="w-full h-full object-cover opacity-30 grayscale-[10%] brightness-[0.5] contrast-[1.1]"
+          />
+          {/* Subtle vignette/darkening to focus on center */}
+          <div className="absolute inset-0 bg-gradient-to-b from-hero-green/50 via-transparent to-hero-green/70" />
+        </div>
 
         {/* Canvas */}
         <canvas
           ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-          style={{ mixBlendMode: 'screen', imageRendering: 'auto' }}
+          className="absolute inset-0 w-full h-full z-10"
+          style={{ 
+            mixBlendMode: 'screen', 
+            imageRendering: 'auto',
+            // @ts-ignore - non-standard property for extra sharpness in some browsers
+            imageRendering: '-webkit-optimize-contrast',
+            filter: 'contrast(1.1) brightness(1.06) saturate(1.05)',
+          } as React.CSSProperties}
           aria-label="Animación de semental JO BULLS"
           role="img"
         />
