@@ -5,8 +5,9 @@ import { motion } from 'framer-motion'
 const sires = [
   {
     id: 'jb-001',
-    name: 'JB Imperio 001',
+    name: 'Bullseye D411',
     subtitle: 'Colección Fundadores',
+    image: 'http://www.jobulls.com/wp-content/uploads/2019/07/Bullseye-D411-Enhanced-Color-July-2019.jpg',
     stats: [
       { label: 'Peso Nac. EPD', value: '+3.2' },
       { label: 'Peso Des. EPD', value: '+48' },
@@ -18,8 +19,9 @@ const sires = [
   },
   {
     id: 'jb-044',
-    name: 'JB Titán 44',
-    subtitle: 'Línea Vigor',
+    name: 'Jo Herd Bull 044',
+    subtitle: 'Sementales de Hato',
+    image: 'http://www.jobulls.com/wp-content/uploads/2011/04/3008-Looking-at-the-camera-Smaller-File.jpg',
     stats: [
       { label: 'Peso Nac. EPD', value: '+2.8' },
       { label: 'Peso Des. EPD', value: '+52' },
@@ -31,14 +33,15 @@ const sires = [
   },
   {
     id: 'jb-012',
-    name: 'JB Legado Real 12',
-    subtitle: 'Línea Legado',
+    name: 'Jo Bull 302',
+    subtitle: 'Línea Superior',
+    image: 'http://www.jobulls.com/wp-content/uploads/2011/04/Jo-Bulls-Winter16-NEW2.jpg',
     stats: [
       { label: 'Peso Nac. EPD', value: '+1.9' },
       { label: 'Peso Des. EPD', value: '+44' },
       { label: 'Leche EPD', value: '+17' },
     ],
-    badge: 'Maternal',
+    badge: 'Recomendado',
     description: 'Excepcional transmisión de habilidad materna. Progenie con la mejor docilidad del registro.',
     featured: false,
   },
@@ -80,14 +83,13 @@ export default function Products() {
           className="relative rounded-sm overflow-hidden mb-6 bg-hero-green text-body-cream"
         >
           <div className="flex flex-col md:flex-row">
-            {/* Image placeholder */}
-            <div className="md:w-1/2 aspect-[4/3] md:aspect-auto bg-gradient-to-br from-hero-green to-[#2d4a32] flex items-center justify-center min-h-[280px]">
-              <div className="text-center opacity-30">
-                <svg className="w-16 h-16 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <p className="text-xs tracking-widest">Fotografía disponible en catálogo</p>
-              </div>
+            {/* Image */}
+            <div className="md:w-1/2 aspect-[4/3] md:aspect-auto min-h-[280px] overflow-hidden">
+              <img
+                src={sires[0].image}
+                alt={sires[0].name}
+                className="w-full h-full object-cover"
+              />
             </div>
             {/* Content */}
             <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-between">
@@ -100,9 +102,9 @@ export default function Products() {
                     Best of Lineage
                   </span>
                 </div>
-                <h3 className="font-serif text-3xl md:text-4xl font-bold mb-3">JB Imperio 001</h3>
+                <h3 className="font-serif text-3xl md:text-4xl font-bold mb-3">{sires[0].name}</h3>
                 <p className="font-sans text-sm text-white/60 mb-8 leading-relaxed max-w-sm">
-                  Conformación excepcional, temperamento 1A. Progenie con crecimiento superior al 92% de los sementales registrados AMCA. El fundador de la línea JB.
+                  {sires[0].description}
                 </p>
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   {sires[0].stats.map((s) => (
@@ -114,12 +116,12 @@ export default function Products() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button className="btn-ghost flex-1 sm:flex-none" aria-label="Solicitar semen de JB Imperio 001">
-                  Solicitar Semen
-                </button>
+                <a href="https://jobulls.myshopify.com/" target="_blank" rel="noopener noreferrer" className="btn-ghost flex-1 sm:flex-none flex items-center justify-center text-center" aria-label={`Purchase semen of ${sires[0].name}`}>
+                  Purchase Semen
+                </a>
                 <button
                   className="border border-white/30 text-white/70 font-sans text-sm font-semibold tracking-widest uppercase px-5 py-3 rounded-sm transition-all duration-200 hover:border-white hover:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-gold"
-                  aria-label="Ver genealogía de JB Imperio 001"
+                  aria-label={`Ver genealogía de ${sires[0].name}`}
                 >
                   Genealogía
                 </button>
@@ -141,11 +143,13 @@ export default function Products() {
               className="card-base flex flex-col"
               aria-label={`Semental ${sire.name}`}
             >
-              {/* Image placeholder */}
-              <div className="aspect-[4/3] bg-[#1B2A1E] rounded-sm mb-5 flex items-center justify-center">
-                <svg className="w-10 h-10 text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
+              {/* Image */}
+              <div className="aspect-[4/3] rounded-sm mb-5 overflow-hidden">
+                <img
+                  src={sire.image}
+                  alt={sire.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="flex items-center justify-between mb-1">
                 <p className="font-sans text-[10px] tracking-widest uppercase text-muted">{sire.subtitle}</p>
@@ -164,9 +168,9 @@ export default function Products() {
                 ))}
               </div>
               <div className="flex gap-3">
-                <button className="btn-primary flex-1 text-xs" aria-label={`Solicitar semen de ${sire.name}`}>
-                  Solicitar Semen
-                </button>
+                <a href="https://jobulls.myshopify.com/" target="_blank" rel="noopener noreferrer" className="btn-primary flex-1 text-xs flex items-center justify-center text-center" aria-label={`Purchase semen of ${sire.name}`}>
+                  Purchase Semen
+                </a>
                 <button
                   className="border border-border-light text-muted hover:border-hero-green hover:text-hero-green font-sans text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-sm transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent-gold"
                   aria-label={`Ver genealogía de ${sire.name}`}

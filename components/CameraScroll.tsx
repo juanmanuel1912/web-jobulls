@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 import { useScroll, useTransform, motion, MotionValue } from 'framer-motion'
+import { useLanguage } from '@/app/LanguageContext'
 
 /* ─────────────────────────────────────────────
    Types
@@ -90,6 +91,7 @@ function CtaOverlay({ scrollYProgress, start, end }: { scrollYProgress: MotionVa
    Main component
 ───────────────────────────────────────────── */
 export default function CameraScroll() {
+  const { t } = useLanguage()
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const imagesRef = useRef<HTMLImageElement[]>([])
@@ -308,18 +310,29 @@ export default function CameraScroll() {
         {ready && (
           <Overlay scrollYProgress={scrollYProgress} start={0} end={0.18}>
             <div className="text-center px-6 max-w-2xl">
-              <p className="section-label text-accent-gold mb-4">Genética Bovina de Élite</p>
-              <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-body-cream leading-none tracking-tight mb-6">
-                JO BULLS
+              <p 
+                className="section-label text-accent-gold mb-4"
+                style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.7)' }}
+              >
+                {t('hero.subtitle')}
+              </p>
+              <h1 
+                className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold text-body-cream leading-none tracking-tight mb-6"
+                style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6)' }}
+              >
+                {t('hero.title')}
               </h1>
-              <p className="font-sans text-lg text-white/70 mb-8 leading-relaxed">
-                La cumbre de la excelencia genética.
+              <p 
+                className="font-sans text-lg text-white/70 mb-8 leading-relaxed"
+                style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.7)' }}
+              >
+                {t('hero.subtitle')}
               </p>
               <button
                 onClick={() => document.getElementById('sires')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-ghost pointer-events-auto"
               >
-                Explorar Sementales
+                {t('hero.cta')}
               </button>
             </div>
           </Overlay>
@@ -329,9 +342,17 @@ export default function CameraScroll() {
         {ready && (
           <Overlay scrollYProgress={scrollYProgress} start={0.25} end={0.45}>
             <div className="text-center px-6 max-w-xl">
-              <p className="section-label text-accent-gold mb-4">Selección rigurosa</p>
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-body-cream leading-tight">
-                Genética Simbrah de élite,<br />forjada en décadas de selección.
+              <p 
+                className="section-label text-accent-gold mb-4"
+                style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.7)' }}
+              >
+                {t('features.subtitle')}
+              </p>
+              <p 
+                className="font-serif text-3xl sm:text-4xl font-bold text-body-cream leading-tight"
+                style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6)' }}
+              >
+                {t('features.f2')}<br />{t('features.f3')}
               </p>
             </div>
           </Overlay>
@@ -341,9 +362,17 @@ export default function CameraScroll() {
         {ready && (
           <Overlay scrollYProgress={scrollYProgress} start={0.55} end={0.75}>
             <div className="text-center px-6 max-w-xl">
-              <p className="section-label text-accent-gold mb-4">Legado</p>
-              <p className="font-serif text-3xl sm:text-4xl font-bold text-body-cream leading-tight">
-                Cada semental, un legado.
+              <p 
+                className="section-label text-accent-gold mb-4"
+                style={{ textShadow: '0 2px 8px rgba(0, 0, 0, 0.7)' }}
+              >
+                {t('features.f1')}
+              </p>
+              <p 
+                className="font-serif text-3xl sm:text-4xl font-bold text-body-cream leading-tight"
+                style={{ textShadow: '0 4px 12px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6)' }}
+              >
+                {t('features.f1_desc')}
               </p>
             </div>
           </Overlay>

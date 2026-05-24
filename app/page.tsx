@@ -1,5 +1,8 @@
 import CameraScroll from '@/components/CameraScroll'
 import Products from '@/components/Products'
+import CatalogCTA from '@/components/CatalogCTA'
+import Gallery from '@/components/Gallery'
+import Videos from '@/components/Videos'
 import Features from '@/components/Features'
 import UseCases from '@/components/UseCases'
 import Specs from '@/components/Specs'
@@ -14,6 +17,15 @@ export default function Home() {
 
       {/* Elite Sires Gallery */}
       <Products />
+
+      {/* Catalog CTA */}
+      <CatalogCTA />
+
+      {/* Photo Gallery */}
+      <Gallery />
+
+      {/* Videos Section */}
+      <Videos />
 
       {/* Breeding Philosophy */}
       <Features />

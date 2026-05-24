@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import { LanguageProvider } from './LanguageContext'
+import Header from '@/components/Header'
 import './globals.css'
 
 const inter = Inter({
@@ -18,11 +20,11 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: 'JO BULLS — Genética Bovina de Élite',
   description:
-    'Sementales Simbrah de alto rendimiento. Décadas de selección rigurosa al servicio de su hato. Registro oficial AMCA · Trazabilidad genética garantizada.',
-  keywords: ['JO BULLS', 'genética bovina', 'sementales Simbrah', 'EPD', 'mejoramiento genético'],
+    'Sementales Hereford Negro de alto rendimiento. Décadas de selección rigurosa al servicio de su rebaño. Miembros ABHA · Adaptados a ambientes extremos.',
+  keywords: ['JO BULLS', 'genética bovina', 'sementales Hereford Negro', 'EPD', 'mejoramiento genético'],
   openGraph: {
     title: 'JO BULLS — Genética Bovina de Élite',
-    description: 'La cumbre de la excelencia genética Simbrah.',
+    description: 'Ganado que prospera en ambientes extremos.',
     type: 'website',
   },
 }
@@ -33,8 +35,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${inter.variable} ${playfair.variable}`}>
-      <body>{children}</body>
+    <html lang="es" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+      <body suppressHydrationWarning>
+        <LanguageProvider>
+          <Header />
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }
